@@ -1,5 +1,6 @@
 package org.example;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
@@ -85,12 +86,6 @@ public class SISTEMA
         id_m++;
 
         return materia;
-    }
-
-
-    public void Comparar()
-    {
-
     }
 
     public ALUMNO CrearAlumno()
@@ -197,19 +192,18 @@ public class SISTEMA
 
             MATERIA materiaSeleccionada = listaMaterias.get(id_mTemp - 1); //Es -1 porque las listas empieza en 0
 
+            boolean registroExitoso2 = false;
             for (ALUMNO a : listaAlumnos)
             {
                 if (a.getMatricula() == id_aTemp)
                 {
                     a.getListaMateriasAlumnos().add(materiaSeleccionada);
-                }
-                else
-                {
-                    System.out.println("No hay alumno con esa matricula");
+                    registroExitoso2 = true;
                 }
             }
-            System.out.println("Registro exitoso!");
-        }
+            if (registroExitoso2)  System.out.println("Registro exitoso!");
+            else System.out.println("No se encontró el grupo con esa ID");        }
+
         else
         {
             System.out.println("No hay materias registradas...");
@@ -242,18 +236,18 @@ public class SISTEMA
             int posicion = IntStream.range(0,listaAlumnos.size()).filter(i->listaAlumnos.get(i).getMatricula() == matriculaTemp).findFirst().orElse(-1);
             ALUMNO alumnoSeleccionada = listaAlumnos.get(posicion); //Es -1 porque las listas empieza en 0
 
+            boolean registroExitoso1 = false;
+
             for (GRUPO g : listaGrupos)
             {
                 if (g.getId_g() == id_gTemp)
                 {
                     g.getListaAlumnosGrupos().add(alumnoSeleccionada);
-                }
-                else
-                {
-                    System.out.println("No hay grupo con esa ID");
+                    registroExitoso1 = true;
                 }
             }
-            System.out.println("Registro exitoso!");
+            if (registroExitoso1)  System.out.println("Registro exitoso!");
+            else System.out.println("No se encontró el grupo con esa ID");
         }
         else
         {

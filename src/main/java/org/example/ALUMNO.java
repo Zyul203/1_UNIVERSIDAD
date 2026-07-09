@@ -53,7 +53,7 @@ public class ALUMNO
         String texto = "ALUMNO: {Matricula = " + matricula + ", nombre_A = " + nombre_A + ", apellido = " + apellido + ", sexo =  " + sexo + ", teléfono =  " + telefono + ", correo = " + correo + "}";
         for (MATERIA m : listaMateriasAlumnos)
         {
-            texto += "\n        * " + m.toString();
+            texto += "\n                * " + m.toString();
         }
 
         return texto;
